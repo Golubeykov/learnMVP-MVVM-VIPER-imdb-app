@@ -7,9 +7,9 @@
 
 import UIKit
 
-class DetailedInfoViewController: UIViewController {
+class DetailedInfoViewController: UIViewController, MovieDetailedInfoPresenterOutput {
     //MARK: - Properties
-    var movie: Movie? = nil
+    var presenter: MoviesDetailedInfoPresenter
     
     //MARK: - Views
     @IBOutlet weak var detailedImage: UIImageView!
@@ -17,10 +17,21 @@ class DetailedInfoViewController: UIViewController {
     @IBOutlet weak var detailedDescription: UILabel!
     
     //MARK: - Methods
+    init(presenter: MoviesDetailedInfoPresenter) {
+        self.presenter = presenter
+        super.init(nibName: nil, bundle: nil)
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setPresenter() {
+        presenter.setView(self)
+    }
     private func configureView() {
-        detailedImage.image = movie?.image ?? UIImage()
-        detailedTitle.text = movie?.name ?? ""
-        detailedDescription.text = movie?.description ?? ""
+        detailedImage.image = presenter.setLogoForMovie()
+        detailedTitle.text = presenter.setTitleForMovie()
+        detailedDescription.text = presenter.setDescriptionForMovie()
     }
     private func configureNavigation() {
         navigationItem.title = "Detailed information"

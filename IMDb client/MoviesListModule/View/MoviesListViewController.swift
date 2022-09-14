@@ -18,8 +18,8 @@ class MoviesListViewController: UIViewController, MoviesListPresenterOutput {
     
     //MARK: - Methods
     func openMoviesListView(movie: Movie) {
-        let vc = DetailedInfoViewController()
-        vc.movie = movie
+        let presenter = MoviesDetailedInfoPresenter(movie: movie)
+        let vc = DetailedInfoViewController(presenter: presenter)
         navigationController?.pushViewController(vc, animated: true)
     }
     private func configureTableView() {
