@@ -31,6 +31,13 @@ class MoviesListViewController: UIViewController, MoviesListPresenterOutput {
         super.viewDidLoad()
         setPresenter()
         configureTableView()
+
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        presenter.getMovies(name: "Cat") {
+            self.moviesListTableView.reloadData()
+        }
     }
     
 }
@@ -41,7 +48,6 @@ extension MoviesListViewController: UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: movieInListCell, for: indexPath) as! MovieTableViewCell
-        print(presenter.titleForMovieAt(indexPath.row))
         cell.movieImageView.image = presenter.imageForMovieAt(indexPath.row)
         cell.movieTitleLabel.text = presenter.titleForMovieAt(indexPath.row)
         cell.movieDescribtionLabel.text = presenter.descriptionForMovieAt(indexPath.row)

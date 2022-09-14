@@ -10,7 +10,7 @@ import UIKit
 
 let apiKey = "k_il0e4iky"
 
-func searchMovies(for movieNameString: String, completion: @escaping (Result<JSONRoot, Error>) -> Void) {
+func findMovies(for movieNameString: String, completion: @escaping (Result<JSONRoot, Error>) -> Void) {
     let movieNameClearedFromSpaces = movieNameString.replacingOccurrences(of: " ", with: "%")
     
     guard let url = URL(string: "https://imdb-api.com/API/Search/\(apiKey)/\(movieNameClearedFromSpaces)") else { return }

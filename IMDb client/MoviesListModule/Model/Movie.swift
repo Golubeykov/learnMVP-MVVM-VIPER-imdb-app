@@ -14,5 +14,30 @@ struct Movie {
     let image: UIImage
 }
 
-
-let testMovies: [Movie] = [Movie(name: "Star Wats", description: "JSAjfhaskjdh", image: UIImage(systemName: "pencil") ?? UIImage())]
+class MovieModel {
+    var moviesList: [Movie]
+    
+    init() {
+        self.moviesList = []
+    }
+    
+    func loadMoviesWithName(_ name: String, completion: @escaping ()->Void) {
+        findMovies(for: name) { result in
+            if case .success(let result) = result {
+                result.results.forEach { [weak self] result in
+                    if let url = URL(string: result.image), let image = loadImage(for: url) {
+                        let movie = Movie(name: result.title, description: result.resultDescription, image: image)
+                        self?.moviesList.append(movie)
+                        completion()
+                    } else {
+                        let movie = Movie(name: result.title, description: result.resultDescription, image: UIImage())
+                        self?.moviesList.append(movie)
+                        completion()
+                    }
+                }
+            } else {
+                completion()
+            }
+        }
+    }
+}

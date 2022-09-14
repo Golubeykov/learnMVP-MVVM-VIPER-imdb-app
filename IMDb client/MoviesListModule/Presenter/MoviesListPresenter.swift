@@ -26,10 +26,19 @@ protocol MoviesListPresenterOutput {
 
 class MoviesListPresenter: NSObject, MoviesListPresenterInput {
     var view: MoviesListPresenterOutput? = nil
-    private let model = testMovies
+    var model = MovieModel()
+    
+    func getMovies(name: String,completion: @escaping () -> Void) {
+        let nameFormattedForNetworkRequest = name.replacingOccurrences(of: " ", with: "%")
+        model.loadMoviesWithName(nameFormattedForNetworkRequest) {
+            DispatchQueue.main.async {
+                completion()
+            }
+        }
+    }
     
     var numberOfRows: Int {
-        return model.count
+        return model.moviesList.count
     }
     
     func setView(_ view: MoviesListPresenterOutput?) {
@@ -37,22 +46,22 @@ class MoviesListPresenter: NSObject, MoviesListPresenterInput {
     }
     
     func titleForMovieAt(_ index: Int) -> String {
-        let movie = model[index]
+        let movie = model.moviesList[index]
         return movie.name
     }
     
     func descriptionForMovieAt(_ index: Int) -> String {
-        let movie = model[index]
+        let movie = model.moviesList[index]
         return movie.description
     }
     
     func imageForMovieAt(_ index: Int) -> UIImage {
-        let movie = model[index]
+        let movie = model.moviesList[index]
         return movie.image
     }
     
     func didSelectMovieAt(_ index: Int) {
-        let movie = model[index]
+        let movie = model.moviesList[index]
         view?.openMoviesListView(movie: movie)
     }
 }
