@@ -9,20 +9,26 @@ import UIKit
 
 class MoviesListViewController: UIViewController, MoviesListPresenterOutput {
     //MARK: - Properties
-    let presenter: MoviesListPresenter = MoviesListPresenter()
-    let movieInListCell = "MovieTableViewCell"
+    private let presenter: MoviesListPresenter = MoviesListPresenter()
+    private let movieInListCell = "MovieTableViewCell"
     
     //MARK: - Views
-    @IBOutlet weak var moviesListTableView: UITableView!
-    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet private weak var moviesListTableView: UITableView!
+    @IBOutlet private weak var searchBar: UISearchBar!
     
     //MARK: - Methods
     func openMoviesListView(movie: Movie) {}
-    func configureTableView() {
+    private func configureTableView() {
         moviesListTableView.dataSource = self
         moviesListTableView.register(UINib(nibName: movieInListCell, bundle: .main), forCellReuseIdentifier: movieInListCell)
     }
-    func setPresenter() {
+    private func configureSearchBar() {
+        searchBar.delegate = self
+    }
+    private func configureNavigationBar() {
+        navigationItem.title = "Find a movie by title"
+    }
+    private func setPresenter() {
         presenter.setView(self)
     }
     
@@ -30,14 +36,12 @@ class MoviesListViewController: UIViewController, MoviesListPresenterOutput {
     override func viewDidLoad() {
         super.viewDidLoad()
         setPresenter()
+        configureSearchBar()
         configureTableView()
-
     }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        presenter.getMovies(name: "Cat") {
-            self.moviesListTableView.reloadData()
-        }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configureNavigationBar()
     }
     
 }
@@ -52,5 +56,30 @@ extension MoviesListViewController: UITableViewDataSource {
         cell.movieTitleLabel.text = presenter.titleForMovieAt(indexPath.row)
         cell.movieDescribtionLabel.text = presenter.descriptionForMovieAt(indexPath.row)
         return cell
+    }
+}
+
+//MARK: - Searchbar delegate
+extension MoviesListViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let dispatchGroup = DispatchGroup()
+        
+        searchBar.endEditing(true)
+        
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.hidesWhenStopped = true
+        self.view.addSubview(activityIndicator)
+        activityIndicator.center = view.center
+        activityIndicator.startAnimating()
+        moviesListTableView.isUserInteractionEnabled = false
+        dispatchGroup.enter()
+        presenter.getMovies(name: searchBar.text) {
+            dispatchGroup.leave()
+        }
+        dispatchGroup.notify(queue: DispatchQueue.main) {
+            activityIndicator.stopAnimating()
+            self.moviesListTableView.reloadData()
+            self.moviesListTableView.isUserInteractionEnabled = true
+        }
     }
 }

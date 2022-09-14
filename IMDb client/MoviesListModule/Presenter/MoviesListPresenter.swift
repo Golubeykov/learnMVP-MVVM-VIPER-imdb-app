@@ -28,7 +28,8 @@ class MoviesListPresenter: NSObject, MoviesListPresenterInput {
     var view: MoviesListPresenterOutput? = nil
     var model = MovieModel()
     
-    func getMovies(name: String,completion: @escaping () -> Void) {
+    func getMovies(name: String?,completion: @escaping () -> Void) {
+        guard let name = name else { return completion() }
         let nameFormattedForNetworkRequest = name.replacingOccurrences(of: " ", with: "%")
         model.loadMoviesWithName(nameFormattedForNetworkRequest) {
             DispatchQueue.main.async {
