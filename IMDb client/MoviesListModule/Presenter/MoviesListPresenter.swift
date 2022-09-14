@@ -28,12 +28,20 @@ class MoviesListPresenter: NSObject, MoviesListPresenterInput {
     var view: MoviesListPresenterOutput? = nil
     var model = MovieModel()
     
-    func getMovies(name: String?,completion: @escaping () -> Void) {
-        guard let name = name else { return completion() }
-        let nameFormattedForNetworkRequest = name.replacingOccurrences(of: " ", with: "%")
-        model.loadMoviesWithName(nameFormattedForNetworkRequest) {
+    func getMovies(name: String, completion: @escaping (Errors?) -> Void) {
+        guard name != "" else {
+            completion(Errors.emptyRequest)
+            return
+        }
+        model.loadMoviesWithName(name) { error in
+            guard error != nil else {
+                DispatchQueue.main.async {
+                    completion(nil)
+                }
+                return
+            }
             DispatchQueue.main.async {
-                completion()
+                completion(Errors.networkRequestError)
             }
         }
     }

@@ -21,8 +21,7 @@ class MovieModel {
         self.moviesList = []
     }
     
-    func loadMoviesWithName(_ name: String, completion: @escaping ()->Void) {
-        
+    func loadMoviesWithName(_ name: String, completion: @escaping (Errors?)->Void) {
         findMovies(for: name) { result in
             if case .success(let result) = result {
                 self.moviesList = []
@@ -35,9 +34,27 @@ class MovieModel {
                         self?.moviesList.append(movie)
                     }
                 }
-                completion()
+                completion(nil)
+            } else if case .failure(let error) = result {
+                guard let error = error as? Errors else {
+                    completion(Errors.unknownError)
+                    return
+                }
+                switch error {
+                case .networkRequestError:
+                    completion(Errors.networkRequestError)
+                case .noDataFromServer:
+                    completion(Errors.noDataFromServer)
+                case .JSONDecodeError:
+                    completion(Errors.JSONDecodeError)
+                case .invalidURL:
+                    completion(Errors.invalidURL)
+                default:
+                    completion(Errors.unknownError)
+                }
+                completion(Errors.unknownError)
             } else {
-                completion()
+                completion(Errors.unknownError)
             }
         }
     }

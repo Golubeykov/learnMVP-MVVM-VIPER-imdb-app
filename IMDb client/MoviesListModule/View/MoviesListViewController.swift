@@ -75,6 +75,7 @@ extension MoviesListViewController: UITableViewDataSource, UITableViewDelegate {
 extension MoviesListViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         let dispatchGroup = DispatchGroup()
+        guard let searchText = searchBar.text else { return }
         
         searchBar.endEditing(true)
         
@@ -84,9 +85,16 @@ extension MoviesListViewController: UISearchBarDelegate {
         activityIndicator.center = view.center
         activityIndicator.startAnimating()
         moviesListTableView.isUserInteractionEnabled = false
+        
         dispatchGroup.enter()
-        presenter.getMovies(name: searchBar.text) {
+        print(searchText)
+        presenter.getMovies(name: searchText) { error in
             dispatchGroup.leave()
+            if let error = error {
+                DispatchQueue.main.async {
+                    appendAlertView(for: self, text: "\(error.self)", completion: { _ in })
+                }
+            }
         }
         dispatchGroup.notify(queue: DispatchQueue.main) {
             activityIndicator.stopAnimating()

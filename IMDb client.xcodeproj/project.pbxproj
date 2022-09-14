@@ -21,6 +21,8 @@
 		3A85BD8E28D2271C0082167C /* DetailedInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A85BD8C28D2271C0082167C /* DetailedInfoViewController.swift */; };
 		3A85BD8F28D2271C0082167C /* DetailedInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A85BD8D28D2271C0082167C /* DetailedInfoViewController.xib */; };
 		3A85BD9128D2272E0082167C /* DetailedInfoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A85BD9028D2272E0082167C /* DetailedInfoPresenter.swift */; };
+		3A85BD9528D23B8D0082167C /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A85BD9428D23B8D0082167C /* AlertView.swift */; };
+		3A85BD9828D241310082167C /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A85BD9728D241310082167C /* Errors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		3A85BD8C28D2271C0082167C /* DetailedInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedInfoViewController.swift; sourceTree = "<group>"; };
 		3A85BD8D28D2271C0082167C /* DetailedInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailedInfoViewController.xib; sourceTree = "<group>"; };
 		3A85BD9028D2272E0082167C /* DetailedInfoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedInfoPresenter.swift; sourceTree = "<group>"; };
+		3A85BD9428D23B8D0082167C /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		3A85BD9728D241310082167C /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +82,8 @@
 				3A85BD7028D1E3420082167C /* MoviesListModule */,
 				3A85BD7128D1E3540082167C /* DetailedMovieInfoModule */,
 				3A85BD8328D1F0920082167C /* Model */,
+				3A85BD9228D23B590082167C /* SupportingViews */,
+				3A85BD9628D2411D0082167C /* Constants */,
 			);
 			path = "IMDb client";
 			sourceTree = "<group>";
@@ -179,6 +185,30 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
+		3A85BD9228D23B590082167C /* SupportingViews */ = {
+			isa = PBXGroup;
+			children = (
+				3A85BD9328D23B7E0082167C /* AlertView */,
+			);
+			path = SupportingViews;
+			sourceTree = "<group>";
+		};
+		3A85BD9328D23B7E0082167C /* AlertView */ = {
+			isa = PBXGroup;
+			children = (
+				3A85BD9428D23B8D0082167C /* AlertView.swift */,
+			);
+			path = AlertView;
+			sourceTree = "<group>";
+		};
+		3A85BD9628D2411D0082167C /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				3A85BD9728D241310082167C /* Errors.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -257,7 +287,9 @@
 				3A85BD5B28D1DD9C0082167C /* AppDelegate.swift in Sources */,
 				3A85BD8928D1F3F30082167C /* Movie.swift in Sources */,
 				3A85BD8B28D1F4E90082167C /* MoviesListPresenter.swift in Sources */,
+				3A85BD9528D23B8D0082167C /* AlertView.swift in Sources */,
 				3A85BD8E28D2271C0082167C /* DetailedInfoViewController.swift in Sources */,
+				3A85BD9828D241310082167C /* Errors.swift in Sources */,
 				3A85BD7828D1E3C60082167C /* MovieTableViewCell.swift in Sources */,
 				3A85BD8028D1E7740082167C /* NetworkService.swift in Sources */,
 				3A85BD7C28D1E4C10082167C /* MoviesListViewController.swift in Sources */,
