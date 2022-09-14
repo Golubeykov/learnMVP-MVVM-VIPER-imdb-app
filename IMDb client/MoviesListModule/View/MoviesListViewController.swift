@@ -17,9 +17,14 @@ class MoviesListViewController: UIViewController, MoviesListPresenterOutput {
     @IBOutlet private weak var searchBar: UISearchBar!
     
     //MARK: - Methods
-    func openMoviesListView(movie: Movie) {}
+    func openMoviesListView(movie: Movie) {
+        let vc = DetailedInfoViewController()
+        vc.movie = movie
+        navigationController?.pushViewController(vc, animated: true)
+    }
     private func configureTableView() {
         moviesListTableView.dataSource = self
+        moviesListTableView.delegate = self
         moviesListTableView.register(UINib(nibName: movieInListCell, bundle: .main), forCellReuseIdentifier: movieInListCell)
     }
     private func configureSearchBar() {
@@ -43,10 +48,13 @@ class MoviesListViewController: UIViewController, MoviesListPresenterOutput {
         super.viewWillAppear(animated)
         configureNavigationBar()
     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.searchBar.endEditing(true)
+    }
     
 }
-//MARK: - TableView data source
-extension MoviesListViewController: UITableViewDataSource {
+//MARK: - TableView data source, delegate
+extension MoviesListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         presenter.numberOfRows
     }
@@ -56,6 +64,10 @@ extension MoviesListViewController: UITableViewDataSource {
         cell.movieTitleLabel.text = presenter.titleForMovieAt(indexPath.row)
         cell.movieDescribtionLabel.text = presenter.descriptionForMovieAt(indexPath.row)
         return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter.didSelectMovieAt(indexPath.row)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
