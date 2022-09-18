@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MoviesListViewController" customModule="IMDb_client_MVVM" customModuleProvider="target">
+            <connections>
+                <outlet property="moviesListTableView" destination="Aqf-Ht-JaJ" id="NhN-bk-V3Z"/>
+                <outlet property="searchBar" destination="9UY-o8-cjq" id="hXM-yn-pBk"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="9UY-o8-cjq">
+                    <rect key="frame" x="0.0" y="44" width="414" height="51"/>
+                    <textInputTraits key="textInputTraits"/>
+                </searchBar>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Aqf-Ht-JaJ">
+                    <rect key="frame" x="0.0" y="95" width="414" height="767"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="9UY-o8-cjq" secondAttribute="trailing" id="SWY-Kw-hPF"/>
+                <constraint firstItem="Aqf-Ht-JaJ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="ZgY-d0-jOk"/>
+                <constraint firstItem="9UY-o8-cjq" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="ciW-NP-KgV"/>
+                <constraint firstItem="9UY-o8-cjq" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="g5L-XS-1GB"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Aqf-Ht-JaJ" secondAttribute="bottom" id="jnp-LV-Epg"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Aqf-Ht-JaJ" secondAttribute="trailing" id="tfS-u1-iMY"/>
+                <constraint firstItem="Aqf-Ht-JaJ" firstAttribute="top" secondItem="9UY-o8-cjq" secondAttribute="bottom" id="wBZ-cj-mZ0"/>
+            </constraints>
+            <point key="canvasLocation" x="132" y="112"/>
+        </view>
+        <searchBar contentMode="redraw" id="Kw8-Lg-E2K">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+            <textInputTraits key="textInputTraits"/>
+            <point key="canvasLocation" x="133" y="-100"/>
+        </searchBar>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
