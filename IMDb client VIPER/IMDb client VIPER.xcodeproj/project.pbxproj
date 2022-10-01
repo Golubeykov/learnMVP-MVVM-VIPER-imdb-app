@@ -130,7 +130,6 @@
 			isa = PBXGroup;
 			children = (
 				3A63D35428E8CB8600BE5241 /* View */,
-				3A63D35328E8CB7F00BE5241 /* Interactor */,
 				3A63D35228E8CB7900BE5241 /* Presenter */,
 				3A63D35128E8CB7200BE5241 /* Router */,
 			);
@@ -151,13 +150,6 @@
 				3A63D35928E8CDF700BE5241 /* DetailedInfoPresenter.swift */,
 			);
 			path = Presenter;
-			sourceTree = "<group>";
-		};
-		3A63D35328E8CB7F00BE5241 /* Interactor */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Interactor;
 			sourceTree = "<group>";
 		};
 		3A63D35428E8CB8600BE5241 /* View */ = {
@@ -188,14 +180,14 @@
 		3A954A7D28E82AD700D5543C /* IMDb client VIPER */ = {
 			isa = PBXGroup;
 			children = (
+				3A954A7E28E82AD700D5543C /* AppDelegate.swift */,
+				3A954A9228E82AFF00D5543C /* Application */,
 				3A63D34D28E8C53400BE5241 /* Entity */,
 				3A63D33928E8C19600BE5241 /* Router */,
 				3A954A9F28E82EDD00D5543C /* BusinessModules */,
 				3A954A9C28E82E3400D5543C /* Supporting Views */,
 				3A954A9628E82DF400D5543C /* Services */,
 				3A954A9328E82D5000D5543C /* Constants */,
-				3A954A7E28E82AD700D5543C /* AppDelegate.swift */,
-				3A954A9228E82AFF00D5543C /* Application */,
 			);
 			path = "IMDb client VIPER";
 			sourceTree = "<group>";
@@ -246,8 +238,8 @@
 		3A954A9F28E82EDD00D5543C /* BusinessModules */ = {
 			isa = PBXGroup;
 			children = (
-				3A63D35028E8CB5F00BE5241 /* DetailedMovieInfoModule */,
 				3A954AA028E82EFA00D5543C /* MoviesListModule */,
+				3A63D35028E8CB5F00BE5241 /* DetailedMovieInfoModule */,
 			);
 			path = BusinessModules;
 			sourceTree = "<group>";
@@ -255,10 +247,10 @@
 		3A954AA028E82EFA00D5543C /* MoviesListModule */ = {
 			isa = PBXGroup;
 			children = (
+				3A954AA128E82F0B00D5543C /* View */,
+				3A954AAB28E832C100D5543C /* Presenter */,
 				3A954AB128E833AD00D5543C /* Router */,
 				3A954AAE28E8333300D5543C /* Interactor */,
-				3A954AAB28E832C100D5543C /* Presenter */,
-				3A954AA128E82F0B00D5543C /* View */,
 			);
 			path = MoviesListModule;
 			sourceTree = "<group>";
