@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -10,9 +11,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailedInfoViewController" customModule="IMDb_client" customModuleProvider="target">
             <connections>
-                <outlet property="detailedDescription" destination="MZJ-C1-dWV" id="EUn-ii-ONz"/>
-                <outlet property="detailedImage" destination="0cy-Kl-ViL" id="1gv-QM-zje"/>
-                <outlet property="detailedTitle" destination="Ssr-An-IM0" id="1Sl-5I-qmP"/>
+                <outlet property="detailedDescription" destination="MZJ-C1-dWV" id="etj-ew-X7n"/>
+                <outlet property="detailedImage" destination="0cy-Kl-ViL" id="eRJ-Vr-YoI"/>
+                <outlet property="detailedTitle" destination="Ssr-An-IM0" id="x6q-gA-cp3"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -22,20 +23,20 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0cy-Kl-ViL">
-                    <rect key="frame" x="52" y="74" width="310" height="310"/>
+                    <rect key="frame" x="52" y="78" width="310" height="310"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="310" id="8MX-gV-q91"/>
                         <constraint firstAttribute="width" constant="310" id="Tvu-JR-5gA"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ssr-An-IM0">
-                    <rect key="frame" x="52" y="400" width="310" height="38.5"/>
+                    <rect key="frame" x="52" y="404" width="310" height="38.5"/>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="32"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MZJ-C1-dWV">
-                    <rect key="frame" x="52" y="454.5" width="310" height="24"/>
+                    <rect key="frame" x="52" y="458.5" width="310" height="24"/>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>

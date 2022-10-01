@@ -36,9 +36,8 @@ class MoviesListViewController: UIViewController, MoviesListPresenterOutput {
         presenter.setView(self)
     }
     func openMoviesListView(movie: Movie) {
-        let presenter = MoviesDetailedInfoPresenter(movie: movie)
-        let vc = DetailedInfoViewController(presenter: presenter)
-        navigationController?.pushViewController(vc, animated: true)
+        let router = DefaultRouter(rootTransition: PushTransition())
+        router.openDetailedMovieInfo(for: movie)
     }
 
     //MARK: - Lifecycle

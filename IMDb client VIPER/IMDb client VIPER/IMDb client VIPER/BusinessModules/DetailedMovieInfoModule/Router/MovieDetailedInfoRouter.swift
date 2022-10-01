@@ -12,13 +12,15 @@ protocol MovieDetailedInfoRouter {
 }
 
 extension MovieDetailedInfoRouter where Self: Router {
-    func openDetailedMovieInfo(for movie: Movie) {
-        let transition = PushTransition(isAnimated: true)
+    func openDetailedMovieInfo(for movie: Movie, with transition: Transition) {
         let router = DefaultRouter(rootTransition: transition)
         let presenter = MoviesDetailedInfoPresenter(movie: movie)
         let viewController = DetailedInfoViewController(presenter: presenter)
         router.root = viewController
         route(to: viewController, as: transition)
+    }
+    func openDetailedMovieInfo(for movie: Movie) {
+        openDetailedMovieInfo(for: movie, with: PushTransition())
     }
 }
 
