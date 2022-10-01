@@ -31,6 +31,8 @@ class MoviesListViewController: UIViewController, MoviesListPresenterOutput {
         searchBar.delegate = self
     }
     private func configureNavigationBar() {
+        let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
         navigationItem.title = "Find a movie by title"
     }
     private func setPresenter() {
