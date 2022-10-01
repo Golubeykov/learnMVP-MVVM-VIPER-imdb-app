@@ -10,6 +10,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailedInfoViewController" customModule="IMDb_client_VIPER" customModuleProvider="target">
             <connections>
+                <outlet property="detailedDescription" destination="rQe-mc-Z1y" id="x86-Ex-Www"/>
+                <outlet property="detailedImage" destination="erA-kS-PdX" id="BmG-lX-KwO"/>
+                <outlet property="detailedTitle" destination="Mi7-Ma-mIZ" id="R4k-de-DJ2"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

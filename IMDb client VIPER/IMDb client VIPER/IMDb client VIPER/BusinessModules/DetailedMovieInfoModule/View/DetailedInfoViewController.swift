@@ -40,6 +40,7 @@ class DetailedInfoViewController: UIViewController, MovieDetailedInfoPresenterOu
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        setPresenter()
         configureView()
     }
     override func viewWillAppear(_ animated: Bool) {

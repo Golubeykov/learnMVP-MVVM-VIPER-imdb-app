@@ -15,7 +15,7 @@ extension MovieDetailedInfoRouter where Self: Router {
     func openDetailedMovieInfo(for movie: Movie) {
         let transition = PushTransition(isAnimated: true)
         let router = DefaultRouter(rootTransition: transition)
-        let presenter = MoviesDetailedInfoPresenter(movie: movie, detailedInfoRouter: router)
+        let presenter = MoviesDetailedInfoPresenter(movie: movie)
         let viewController = DetailedInfoViewController(presenter: presenter)
         router.root = viewController
         route(to: viewController, as: transition)

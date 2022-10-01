@@ -35,7 +35,11 @@ class MoviesListViewController: UIViewController, MoviesListPresenterOutput {
     private func setPresenter() {
         presenter.setView(self)
     }
-    func openMoviesListView(movie: Movie) {}
+    func openMoviesListView(movie: Movie) {
+        let presenter = MoviesDetailedInfoPresenter(movie: movie)
+        let vc = DetailedInfoViewController(presenter: presenter)
+        navigationController?.pushViewController(vc, animated: true)
+    }
 
     //MARK: - Lifecycle
     override func viewDidLoad() {

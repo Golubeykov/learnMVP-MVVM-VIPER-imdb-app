@@ -8,7 +8,6 @@
 import UIKit
 
 protocol MovieDetailedInfoPresenterInput {
-    var movie: Movie { get set }
     func setView(_ view: MovieDetailedInfoPresenterOutput?)
 
     func setTitleForMovie() -> String
@@ -22,7 +21,7 @@ class MoviesDetailedInfoPresenter: MovieDetailedInfoPresenterInput {
     var movie: Movie
     var view: MovieDetailedInfoPresenterOutput? = nil
 
-    init(movie: Movie, detailedInfoRouter: Router) {
+    init(movie: Movie) {
         self.movie = movie
     }
 
