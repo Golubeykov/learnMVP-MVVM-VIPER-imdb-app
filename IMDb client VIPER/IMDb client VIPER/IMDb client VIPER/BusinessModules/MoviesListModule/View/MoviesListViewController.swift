@@ -9,7 +9,7 @@ import UIKit
 
 class MoviesListViewController: UIViewController, MoviesListPresenterOutput {
     //MARK: - Properties
-    private let presenter: MoviesListPresenter = MoviesListPresenter()
+    private let presenter: MoviesListPresenter
     private let movieInListCell = "MovieTableViewCell"
 
     // MARK: - Views
@@ -18,7 +18,15 @@ class MoviesListViewController: UIViewController, MoviesListPresenterOutput {
     @IBOutlet weak var moviesListTableView: UITableView!
 
     //MARK: - Methods
-
+    init(presenter: MoviesListPresenter) {
+        self.presenter = presenter
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     private func configureTableView() {
         moviesListTableView.dataSource = self
         moviesListTableView.delegate = self
@@ -34,10 +42,6 @@ class MoviesListViewController: UIViewController, MoviesListPresenterOutput {
     }
     private func setPresenter() {
         presenter.setView(self)
-    }
-    func openMoviesListView(movie: Movie) {
-        let router = DefaultRouter(rootTransition: PushTransition())
-        router.openDetailedMovieInfo(for: movie)
     }
 
     //MARK: - Lifecycle

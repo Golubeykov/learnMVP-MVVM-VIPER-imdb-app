@@ -9,6 +9,7 @@ import UIKit
 
 protocol MoviesListPresenterInput {
     func setView(_ view: MoviesListPresenterOutput?)
+    var router: MovieDetailedInfoRouter { get set }
 
     var numberOfRows: Int { get }
 
@@ -19,13 +20,16 @@ protocol MoviesListPresenterInput {
     func didSelectMovieAt(_ index: Int)
 }
 
-protocol MoviesListPresenterOutput {
-    func openMoviesListView(movie: Movie)
-}
+protocol MoviesListPresenterOutput {}
 
 class MoviesListPresenter: NSObject, MoviesListPresenterInput {
     var view: MoviesListPresenterOutput? = nil
     var interactor = MoviesListInteractor()
+    var router: MovieDetailedInfoRouter
+
+    init(router: MovieDetailedInfoRouter) {
+        self.router = router
+    }
 
     func getMovies(name: String, completion: @escaping (Errors?) -> Void) {
         guard name != "" else {
@@ -70,6 +74,6 @@ class MoviesListPresenter: NSObject, MoviesListPresenterInput {
 
     func didSelectMovieAt(_ index: Int) {
         let movie = interactor.moviesList[index]
-        view?.openMoviesListView(movie: movie)
+        router.openDetailedMovieInfo(for: movie)
     }
 }
